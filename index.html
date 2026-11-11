@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>STARRYSOUND | Elige tu experiencia</title>
+  <meta name="description" content="Entra al universo STARRYSOUND: realidad aumentada por seguimiento de imagen o filtro facial.">
+  <meta name="theme-color" content="#1996d3">
+  <meta property="og:title" content="STARRYSOUND | Elige tu experiencia">
+  <meta property="og:description" content="Realidad aumentada o filtro facial. Elige cómo entrar al universo STARRYSOUND.">
+  <link rel="icon" href="assets/img/star-mango.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/trimen-drawing-round.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/crayons-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Estrellas decorativas a la deriva (fondo) -->
+  <div class="sky" aria-hidden="true">
+    <img src="assets/img/star-mango.svg"     alt="" style="--x:6%;  --y:7%;  --s:34px; --r:-12deg; --d:7s">
+    <img src="assets/img/star-frambuesa.svg" alt="" style="--x:84%; --y:11%; --s:46px; --r:14deg;  --d:9s">
+    <img src="assets/img/star-limon.svg"     alt="" style="--x:91%; --y:47%; --s:30px; --r:-8deg;  --d:8s">
+    <img src="assets/img/star-uva.svg"       alt="" style="--x:3%;  --y:58%; --s:40px; --r:10deg;  --d:10s">
+    <img src="assets/img/star-cereza.svg"    alt="" style="--x:80%; --y:86%; --s:36px; --r:-16deg; --d:8.5s">
+    <img src="assets/img/star-blueberry.svg" alt="" style="--x:10%; --y:90%; --s:32px; --r:6deg;   --d:7.5s">
+  </div>
+
+  <main class="wrap">
+
+    <!-- 1. Sección principal -->
+    <header class="hero">
+      <h1 class="logo reveal" style="--i:0">
+        <img class="float" src="assets/img/logo.svg" alt="STARRYSOUND" width="413" height="195">
+      </h1>
+      <h2 class="title reveal" style="--i:1">Elige tu <span>experiencia</span></h2>
+      <p class="lead reveal" style="--i:2">Dos formas de entrar al universo STARRYSOUND</p>
+    </header>
+
+    <!-- 2. Opciones -->
+    <section class="options" aria-label="Experiencias disponibles">
+
+      <article class="card card--ar reveal" style="--i:3">
+        <span class="card__num" aria-hidden="true">01</span>
+        <div class="card__art" aria-hidden="true">
+          <span class="scan"><i></i><i></i><i></i><i></i></span>
+          <img src="assets/img/star-mango.svg" alt="" width="89" height="86">
+        </div>
+        <h3 class="card__name">Realidad aumentada</h3>
+        <p class="card__desc">Descubre la experiencia STARRYSOUND mediante seguimiento de imagen.</p>
+        <a class="btn" href="https://filtrostarrysoundfinal.vercel.app/">
+          Iniciar experiencia
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+
+      <article class="card card--face reveal" style="--i:4">
+        <span class="card__num" aria-hidden="true">02</span>
+        <div class="card__art" aria-hidden="true">
+          <span class="face-guide"></span>
+          <img src="assets/img/star-limon.svg" alt="" width="89" height="86">
+        </div>
+        <h3 class="card__name">Filtro facial</h3>
+        <p class="card__desc">Explora la experiencia STARRYSOUND mediante seguimiento facial.</p>
+        <a class="btn" href="https://filtro-rostro-starrysound.vercel.app/">
+          Probar filtro
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-7 7 7-7 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+
+    </section>
+
+    <p class="hint reveal" style="--i:5">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+      Permite el acceso a la cámara para vivir la experiencia
+    </p>
+
+    <!-- 3. Cierre con elementos de identidad -->
+    <footer class="closing reveal" style="--i:6">
+      <img class="orbit" src="assets/img/orbit.svg" alt="" width="109" height="60">
+      <ul class="crew" aria-label="Las estrellas de STARRYSOUND">
+        <li style="--n:0"><button type="button"><img src="assets/img/star-mango.svg"     alt="" width="89" height="86"><span>Mango</span></button></li>
+        <li style="--n:1"><button type="button"><img src="assets/img/star-frambuesa.svg" alt="" width="89" height="86"><span>Frambuesa</span></button></li>
+        <li style="--n:2"><button type="button"><img src="assets/img/star-blueberry.svg" alt="" width="89" height="86"><span>Blue Berry</span></button></li>
+        <li style="--n:3"><button type="button"><img src="assets/img/star-limon.svg"     alt="" width="89" height="86"><span>Limon</span></button></li>
+        <li style="--n:4"><button type="button"><img src="assets/img/star-uva.svg"       alt="" width="89" height="86"><span>Uva</span></button></li>
+        <li style="--n:5"><button type="button"><img src="assets/img/star-cereza.svg"    alt="" width="89" height="86"><span>Cereza</span></button></li>
+      </ul>
+      <p class="tag"><span>Seis estrellas</span><span>Seis sabores</span><span>Un universo</span></p>
+    </footer>
+
+  </main>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+/* ==========================================================
+   STARRYSOUND — página de inicio
+   Identidad: manual de marca (paleta, tipografías, estrellas)
+   ========================================================== */
+
+@font-face {
+  font-family: "Trimen Drawing";
+  src: url("../assets/fonts/trimen-drawing-round.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Crayons";
+  src: url("../assets/fonts/crayons-regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root {
+  /* Paleta del manual */
+  --black: #100f0d;
+  --white: #f2f2f3;
+  --mango: #f4bb17;
+  --frambuesa: #cf2068;
+  --blueberry: #1996d3;
+  --limon: #88c040;
+  --uva: #955ca5;
+  --cereza: #ee2324;
+  --mango-dark: #b98a0a;
+
+  /* Tipografías: principal = Trimen Drawing, secundaria = Crayons */
+  --f-display: "Trimen Drawing", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --f-label: "Crayons", "Trimen Drawing", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100svh;
+  overflow-x: hidden;
+  background-color: var(--black);
+  background-image:
+    radial-gradient(60vmax 40vmax at 12% -4%, rgba(25, 150, 211, .30), transparent 62%),
+    radial-gradient(50vmax 40vmax at 108% 34%, rgba(207, 32, 104, .22), transparent 62%),
+    radial-gradient(60vmax 40vmax at -4% 104%, rgba(244, 187, 23, .15), transparent 62%);
+  color: var(--white);
+  font-family: var(--f-display);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Fondo: estrellas a la deriva ---------- */
+.sky {
+  position: fixed; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+}
+.sky img {
+  position: absolute; left: var(--x); top: var(--y);
+  width: var(--s); height: auto; opacity: .8;
+  animation: drift var(--d) ease-in-out infinite alternate;
+}
+
+/* ---------- Estructura ---------- */
+.wrap {
+  position: relative; z-index: 1;
+  width: min(100%, 520px);
+  margin-inline: auto;
+  padding:
+    max(22px, env(safe-area-inset-top))
+    max(20px, env(safe-area-inset-right))
+    max(34px, env(safe-area-inset-bottom))
+    max(20px, env(safe-area-inset-left));
+  display: flex; flex-direction: column; align-items: center; gap: 26px;
+}
+
+/* ---------- Hero ---------- */
+.hero { display: grid; justify-items: center; gap: 14px; text-align: center; width: 100%; }
+.logo { width: min(80vw, 390px); line-height: 0; }
+.logo img { width: 100%; height: auto; display: block; }
+.title {
+  font-size: clamp(36px, 11vw, 58px);
+  font-weight: 400; line-height: 1; letter-spacing: .03em;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, .45);
+}
+.title span { display: block; color: var(--mango); }
+.lead {
+  font-size: clamp(14px, 4vw, 17px);
+  letter-spacing: .09em; line-height: 1.4;
+  color: rgba(242, 242, 243, .82); max-width: 28ch;
+}
+
+/* ---------- Tarjetas de opciones ---------- */
+.options { display: grid; gap: 20px; width: 100%; }
+
+.card {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; justify-items: center; gap: 12px;
+  padding: 24px 22px 26px;
+  border-radius: 32px; text-align: center;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .35);
+}
+.card--ar   { background: var(--blueberry); }
+.card--face { background: var(--frambuesa); }
+
+/* Órbita de la marca como textura */
+.card::before {
+  content: ""; position: absolute; z-index: -1;
+  width: 95%; aspect-ratio: 109 / 60;
+  right: -28%; bottom: -14%;
+  background: url("../assets/img/orbit.svg") center / contain no-repeat;
+  opacity: .16; transform: rotate(-14deg);
+}
+.card--face::before { right: auto; left: -28%; top: 28%; bottom: auto; transform: rotate(12deg); }
+
+.card__num {
+  position: absolute; top: 16px; left: 18px;
+  padding: 5px 13px; border-radius: 999px;
+  background: var(--black); color: var(--mango);
+  font-family: var(--f-label); font-size: 18px; letter-spacing: .08em; line-height: 1.1;
+}
+
+.card__art {
+  position: relative; display: grid; place-items: center;
+  width: 136px; aspect-ratio: 1; margin-top: 8px;
+}
+.card__art > img { width: 84px; height: auto; animation: wobble 4s ease-in-out infinite; }
+
+/* Opción 1: marco de escaneo (seguimiento de imagen) */
+.scan { position: absolute; inset: 0; animation: breathe 2.6s ease-in-out infinite; }
+.scan i { position: absolute; width: 30px; height: 30px; border: 0 solid var(--white); }
+.scan i:nth-child(1) { top: 0; left: 0;  border-width: 5px 0 0 5px; border-top-left-radius: 14px; }
+.scan i:nth-child(2) { top: 0; right: 0; border-width: 5px 5px 0 0; border-top-right-radius: 14px; }
+.scan i:nth-child(3) { bottom: 0; left: 0;  border-width: 0 0 5px 5px; border-bottom-left-radius: 14px; }
+.scan i:nth-child(4) { bottom: 0; right: 0; border-width: 0 5px 5px 0; border-bottom-right-radius: 14px; }
+.scan::after {
+  content: ""; position: absolute; left: 12%; right: 12%; height: 4px; top: 14%;
+  background: var(--mango); border-radius: 4px;
+  animation: sweep 2.6s ease-in-out infinite;
+}
+
+/* Opción 2: guía facial (seguimiento facial) */
+.face-guide {
+  position: absolute; inset: 4px; border-radius: 50%;
+  border: 4px dashed rgba(242, 242, 243, .9);
+  animation: spin 22s linear infinite;
+}
+.face-guide::before, .face-guide::after {
+  content: ""; position: absolute; width: 13px; height: 13px; border-radius: 50%;
+  background: var(--mango);
+}
+.face-guide::before { top: 12%; left: 8%; }
+.face-guide::after  { bottom: 12%; right: 8%; background: var(--white); }
+
+.card__name { font-size: clamp(27px, 8.4vw, 36px); font-weight: 400; line-height: 1.02; margin-top: 4px; }
+.card__desc {
+  font-size: 16px; line-height: 1.45; letter-spacing: .06em;
+  max-width: 30ch; color: rgba(255, 255, 255, .95);
+}
+
+/* ---------- Botón ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; max-width: 340px; min-height: 58px; margin-top: 8px; padding: 0 24px;
+  border-radius: 999px; background: var(--mango); color: var(--black);
+  font-size: 19px; letter-spacing: .06em; text-decoration: none; text-transform: uppercase;
+  box-shadow: 0 5px 0 var(--mango-dark), 0 10px 22px rgba(0, 0, 0, .28);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn svg { width: 22px; height: 22px; flex: none; transition: transform .2s ease; }
+.btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--mango-dark), 0 4px 10px rgba(0, 0, 0, .28); }
+.btn:focus-visible { outline: 3px solid var(--white); outline-offset: 4px; }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-2px); }
+  .btn:hover svg { transform: translateX(4px); }
+}
+
+/* ---------- Pista de cámara ---------- */
+.hint {
+  display: grid; justify-items: center; gap: 8px;
+  font-size: 12px; letter-spacing: .1em; line-height: 1.4; text-align: center;
+  color: rgba(242, 242, 243, .72); max-width: 30ch;
+}
+.hint svg { width: 22px; height: 22px; }
+
+/* ---------- Cierre ---------- */
+.closing { display: grid; justify-items: center; gap: 18px; width: 100%; padding-top: 6px; }
+.orbit { width: 88px; height: auto; animation: sway 5s ease-in-out infinite alternate; }
+
+.crew {
+  list-style: none; padding: 0; width: 100%; max-width: 420px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 8px;
+}
+.crew button {
+  display: grid; justify-items: center; gap: 8px; width: 100%; padding: 4px;
+  background: none; border: 0; color: inherit; font: inherit; cursor: pointer;
+  text-transform: uppercase;
+}
+.crew img { width: min(76px, 21vw); height: auto; animation: wobble 4s ease-in-out infinite; animation-delay: calc(var(--n) * -.7s); }
+.crew span { font-family: var(--f-label); font-size: 14px; letter-spacing: .08em; line-height: 1.1; }
+.crew button:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; border-radius: 16px; }
+.crew .pop img { animation: pop .55s cubic-bezier(.3, 1.6, .5, 1); }
+
+.tag {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px;
+  font-size: clamp(11px, 3.2vw, 16px); letter-spacing: .06em; color: rgba(242, 242, 243, .85);
+}
+.tag span + span { position: relative; }
+.tag span + span::before {
+  content: ""; position: absolute; left: -14px; top: 50%; width: 9px; height: 9px; margin-top: -5px;
+  background: url("../assets/img/star-mango.svg") center / contain no-repeat;
+}
+
+/* ---------- Animaciones ---------- */
+.reveal { opacity: 0; animation: rise .7s cubic-bezier(.2, .8, .2, 1) forwards; animation-delay: calc(var(--i, 0) * 120ms); }
+.float  { animation: float 6s ease-in-out infinite; }
+.is-hidden *, .is-hidden *::before, .is-hidden *::after { animation-play-state: paused !important; }
+
+@keyframes rise   { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes float  { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-9px) rotate(1.5deg); } }
+@keyframes drift  { from { transform: translate3d(0, 0, 0) rotate(var(--r)); } to { transform: translate3d(9px, -20px, 0) rotate(calc(var(--r) + 16deg)); } }
+@keyframes wobble { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(5deg) translateY(-3px); } }
+@keyframes breathe{ 0%, 100% { transform: scale(1); } 50% { transform: scale(.93); } }
+@keyframes sweep  { 0%, 100% { top: 14%; } 50% { top: 80%; } }
+@keyframes spin   { to { transform: rotate(360deg); } }
+@keyframes sway   { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
+@keyframes pop    { 0% { transform: scale(1) rotate(0); } 40% { transform: scale(1.28) rotate(-14deg); } 100% { transform: scale(1) rotate(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; }
+}
+
+/* ---------- Tablet / escritorio ---------- */
+@media (min-width: 700px) {
+  .wrap { width: min(100%, 1020px); gap: 34px; padding-top: 36px; }
+  .logo { width: 440px; }
+  .options { grid-template-columns: 1fr 1fr; gap: 26px; align-items: stretch; }
+  .card { padding: 30px 28px 32px; }
+  .crew { grid-template-columns: repeat(6, 1fr); max-width: 640px; }
+  .crew img { width: 80px; }
+}
